@@ -1,5 +1,31 @@
 {% extends 'base.html' %}
 
 {% block login %}
-<h1>Hello admin</h1>
+</br>
+<style>
+    .btn-primary {
+        background-color: #0099cc;
+        border-color: #0099cc;
+        padding: 15px;
+        margin: 50px 10px;
+        font-size: 20px;
+        text-align: center;
+        display: inline-block;
+        width: auto;
+    }
+    #wrap{
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
+<div id="wrap">
+    <a class="btn btn-primary" href="/carlist" role="button">List Cars</a>
+    <a class="btn btn-primary" href="/customerlist" role="button">List Customers</a>
+    <a class="btn btn-primary" href="/stats" role="button">Show Statistics</a>
+    <a class="btn btn-primary" href="/" role="button">Add Car</a>
+    <a class="btn btn-primary" href="/" role="button">Repair Car / Delete Car</a>
+</div>
 {% endblock %}

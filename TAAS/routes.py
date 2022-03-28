@@ -1,7 +1,7 @@
 from TAAS import app
 from flask import render_template, request, session, redirect, url_for
 from TAAS import db
-from TAAS.models import Customers, Administrator, Car, Journey, Booking, CModel
+from TAAS.models import Customers, Administrator, Car, Journey, Booking, CModel, Statistics
 from datetime import datetime
 
 @app.route('/', methods=["REG", "POST", "GET"])
@@ -40,8 +40,12 @@ def customer_login():
         username = request.form['username']
         password = request.form['password']
         cust = Customers.query.filter_by(uname=username).first()
-        if password == cust.password:
-            print("Login")
+        if cust is None:  # if wrong username
+            return redirect("/")
+        elif password == cust.password:
+            return render_template('customer.html', customer=cust)
+        else:  # if password is wrong
+            return redirect("/")
 
     return redirect("/")
 
@@ -76,3 +80,18 @@ def register():
 @app.route('/adminstr')
 def adminstr():
     return render_template('adminstr.html')
+
+@app.route('/carlist')
+def carlist():
+    cars = Car.query.all()
+    return render_template('carlist.html', cars=cars)
+
+@app.route('/customerlist')
+def customerlist():
+    customers = Customers.query.all()
+    return render_template('customerlist.html', customers=customers)
+
+@app.route('/stats')
+def stats():
+    statlist = Statistics.query.all()
+    return render_template('stats.html', statlist=statlist)
