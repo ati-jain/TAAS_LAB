@@ -18,7 +18,7 @@ class CModel(db.Model):
     accar = db.Column(db.Integer)
     naccar = db.Column(db.Integer)
     sts = db.Column(db.Integer)
-    rent = db.Column(db.Integer)
+    # rent = db.Column(db.Integer)
 
 
 class Car(CModel):

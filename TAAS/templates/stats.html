@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block login %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 style="font-size: 50px; color:rgb(69, 214, 224)">Statistics</h1>
+        </div>
+    </div>
+</br></br>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Statistic ID</th>
+                        <th>Demand</th>
+                        <th>Revenue</th>
+                        <th>Profit</th>
+                        <th>Feedback</th>
+                        <th>Fuel Consumption</th>
+                        <th>Maintainence Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stat in statlist %}
+                    <tr>
+                        <td>{{ stat.id }}</td>
+                        <td>{{ stat.demand }}</td>
+                        <td>{{ stat.rvnu }}</td>
+                        <td>{{ stat.prft }}</td>
+                        <td>{{ stat.feedback }}</td>
+                        <td>{{ stat.mntnc }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
