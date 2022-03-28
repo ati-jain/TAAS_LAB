@@ -46,6 +46,7 @@ def customer_login():
             if admn is None: # if admin is not found
                 return redirect('/')
             elif password == admn.password:
+                # response.headers.add('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
                 return redirect('/adminstr')
             else: # if password is wrong
                 return redirect('/')
@@ -54,6 +55,7 @@ def customer_login():
             if cust is None:  # if wrong username
                 return redirect("/")
             elif password == cust.password:
+                # response.headers.add('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
                 return render_template('customer.html', customer=cust)
             else:  # if password is wrong
                 return redirect("/")
