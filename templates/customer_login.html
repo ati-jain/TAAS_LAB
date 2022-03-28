@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+<ul>
+    {% for item in customer %}
+        <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('logout') }}" class="btn btn-primary">Logout</a>
+{% endblock %}

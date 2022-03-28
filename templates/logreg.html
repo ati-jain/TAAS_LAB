@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block login %}
+<div id="id01" class="modal">
+
+    <form class="modal-content animate" action="/customer_login" method="POST">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+            <img src="{{ url_for('static', filename='images/avatar.jpg') }}" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required class="inputs">
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required class="inputs">
+
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Administrator
+            </label>
+            <button type="submit" class="inputs">Login</button>
+        </div>
+    </form>
+</div>
+
+<div id="id02" class="modal">
+
+    <form class="modal-content animate" action="/customer_register" method="POST">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+            <img src="{{ url_for('static', filename='images/avatar.jpg') }}" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" required class="inputs">
+
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required class="inputs">
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="pswd" required class="inputs">
+
+            <label>
+                <input type="checkbox" checked="checked"> Administrator
+            </label>
+            <button type="submit" class="inputs">Login</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
