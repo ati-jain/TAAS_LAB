@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
+app.secret_key = 'deskchampionsknowthesecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///customer.db'
 app.config['SQLALCHEMY_BINDS'] = {'statistics': 'sqlite:///statistics.db', 'cmodel': 'sqlite:///cmodel.db',
                                   'car': 'sqlite:///car.db', 'admin': 'sqlite:///admin.db', 'booking': 'sqlite:///booking.db', 'journey': 'sqlite:///journey.db'}
@@ -28,6 +29,7 @@ class CModel(db.Model):
     accar = db.Column(db.Integer)
     naccar = db.Column(db.Integer)
     sts = db.Column(db.Integer)
+    rent = db.Column(db.Integer)
 
 
 class Car(CModel):
@@ -143,13 +145,15 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
-
 @app.route('/register', methods=["POST", "GET"])
 def register():
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
 
+@app.route('/adminstr')
+def adminstr():
+    return render_template('adminstr.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
