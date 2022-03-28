@@ -1,7 +1,7 @@
 from TAAS import app
 from flask import render_template, request, session, redirect, url_for
 from TAAS import db
-from TAAS import Customers, Administrator, Car, Journey, Booking, CModel
+from TAAS.models import Customers, Administrator, Car, Journey, Booking, CModel
 from datetime import datetime
 
 @app.route('/', methods=["REG", "POST", "GET"])
