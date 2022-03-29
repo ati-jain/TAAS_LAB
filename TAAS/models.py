@@ -6,25 +6,26 @@ class Statistics(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     demand = db.Column(db.Integer)
     rvnu = db.Column(db.Integer)
-    prft = db.Column(db.Boolean)
+    prft = db.Column(db.Integer)
     feedback = db.Column(db.Float)
     fuel = db.Column(db.Integer)
     mntnc = db.Column(db.Integer)
 
 class CModel(db.Model):
     __bind_key__ = 'cmodel'
-    __abstract__ = True
     mno = db.Column(db.Integer, primary_key=True)
+    mname = db.Column(db.String(20), nullable=False)
     accar = db.Column(db.Integer)
     naccar = db.Column(db.Integer)
     sts = db.Column(db.Integer)
     rent = db.Column(db.Integer)
 
 
-class Car(CModel):
+class Car(db.Model):
     __bind_key__ = 'car'
     id = db.Column(db.Integer, primary_key=True)
     carno = db.Column(db.String(30), nullable=False)
+    model = db.Column(db.String(20), nullable=False)
     pdate = db.Column(db.DateTime, default=datetime.utcnow)
     kms = db.Column(db.Integer)
     ac = db.Column(db.Boolean)
