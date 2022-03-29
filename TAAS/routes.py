@@ -40,7 +40,6 @@ def customer_login():
         username = request.form['username']
         password = request.form['password']
         check = request.form.getlist('adminis')
-        print(check)
         if len(check) != 0 and check[0] == 'checked':
             admn = Administrator.query.filter_by(uname=username, password=password).first()
             if admn is None: # if admin is not found
