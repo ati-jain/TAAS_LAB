@@ -39,13 +39,26 @@ def customer_login():
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
-        cust = Customers.query.filter_by(uname=username).first()
-        if cust is None:  # if wrong username
-            return redirect("/")
-        elif password == cust.password:
-            return render_template('customer.html', customer=cust)
-        else:  # if password is wrong
-            return redirect("/")
+        check = request.form.getlist('adminis')
+        print(check)
+        if len(check) != 0 and check[0] == 'checked':
+            admn = Administrator.query.filter_by(uname=username, password=password).first()
+            if admn is None: # if admin is not found
+                return redirect('/')
+            elif password == admn.password:
+                # response.headers.add('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
+                return redirect('/adminstr')
+            else: # if password is wrong
+                return redirect('/')
+        else:
+            cust = Customers.query.filter_by(uname=username).first()
+            if cust is None:  # if wrong username
+                return redirect("/")
+            elif password == cust.password:
+                # response.headers.add('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
+                return render_template('customer.html', customer=cust)
+            else:  # if password is wrong
+                return redirect("/")
 
     return redirect("/")
 
@@ -57,25 +70,17 @@ def customer_register():
         uname = request.form['uname']
         password = request.form['pswd']
         pjrny = 0
+        cust = Customers.query.filter_by(uname=uname)
+        for cs in cust:
+            if cs.uname == uname:
+                return "Username already exists"
+
         new_customer = Customers(
             name=name, uname=uname, password=password, pjrny=pjrny, jdate=datetime.utcnow())
         db.session.add(new_customer)
         db.session.commit()
 
     return redirect("/")
-
-
-@app.route('/logout')
-def logout():
-    session.pop('id', None)
-    session.pop('username', None)
-    return redirect(url_for('index'))
-
-@app.route('/register', methods=["POST", "GET"])
-def register():
-    if request.method == "POST":
-        username = request.form['username']
-        password = request.form['password']
 
 @app.route('/adminstr')
 def adminstr():
