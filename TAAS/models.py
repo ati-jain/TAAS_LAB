@@ -17,14 +17,15 @@ class CModel(db.Model):
     mname = db.Column(db.String(20), nullable=False)
     accar = db.Column(db.Integer)
     naccar = db.Column(db.Integer)
-    sts = db.Column(db.Integer)
-    rent = db.Column(db.Integer)
+    # sts = db.Column(db.Statistics)
+    rent_h = db.Column(db.Integer)
+    rent_k = db.Column(db.Integer)
 
 
 class Car(db.Model):
     __bind_key__ = 'car'
     id = db.Column(db.Integer, primary_key=True)
-    carno = db.Column(db.String(30), nullable=False)
+    # carno = db.Column(db.String(30), nullable=False)
     model = db.Column(db.String(20), nullable=False)
     pdate = db.Column(db.DateTime, default=datetime.utcnow)
     kms = db.Column(db.Integer)

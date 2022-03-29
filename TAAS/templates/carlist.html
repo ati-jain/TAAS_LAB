@@ -14,9 +14,7 @@
                 <thead>
                     <tr>
                         <th>Car ID</th>
-                        <th>Car No.</th>
                         <th>Car Model</th>
-                        <th>Rent</th>
                         <th>AC</th>
                         <th>Availability</th>
                     </tr>
@@ -25,9 +23,7 @@
                     {% for car in cars %}
                     <tr>
                         <td>{{ car.id }}</td>
-                        <td>{{ car.carno }}</td>
                         <td>{{ car.model }}</td>
-                        <td>{{ car.rent }}</td>
                         <td>{{ car.ac }}</td>
                         <td>{{ car.avl }}</td>
                     </tr>

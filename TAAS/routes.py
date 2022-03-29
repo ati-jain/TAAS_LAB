@@ -99,3 +99,33 @@ def customerlist():
 def stats():
     statlist = Statistics.query.all()
     return render_template('stats.html', statlist=statlist)
+
+@app.route('/addCar',methods= ["POST","GET"])
+def add_Car():
+    if(request.method == "POST"):
+        carname = request.form['carname']
+        quantity = int(request.form['quantity'])
+        type = request.form['dog-names']
+        cost_h = request.form['cost_h']
+        cost_k = request.form['cost_k']
+        if type == "AC":
+            cmdl = CModel(mname=carname, accar=quantity, naccar=0, rent_h=cost_h, rent_k=cost_k)
+            db.session.add(cmdl)
+            db.session.commit()
+            for i in range(quantity):
+                car = Car(model=carname, kms=0, ac=True, avl=True, fuel=0)
+                db.session.add(car)
+                db.session.commit()
+        else:
+            cmdl = CModel(mname=carname, accar=0, naccar=quantity, rent_h=cost_h, rent_k=cost_k)
+            db.session.add(cmdl)
+            db.session.commit()
+            for i in range(quantity):
+                car = Car(model=carname, kms=0, ac=False, avl=True, fuel=0)
+                db.session.add(car)
+                db.session.commit()
+        return redirect('/carlist')
+
+    else:
+        return render_template('addCar.html')
+        

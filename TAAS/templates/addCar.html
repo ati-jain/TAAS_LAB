@@ -1,0 +1,28 @@
+{% extends 'base1.html' %}
+
+{% block login %}
+</br>
+<form METHOD = "POST" action="/addCar">
+    <div class="mb-3">
+        <label for="carname" align="center">Enter Car Name</label><br>
+        <input type="text" id="carname" name="carname" size="100"><br><br>
+        <label for="quantity">Number of Car's</label><br>
+        <input type="number" id="quantity" name="quantity" size="100">
+    </div>
+
+    <label>Choose The Type Of Car</label><br>
+    <select name="dog-names" id="dog-names">
+        <option value="AC">AC</option>
+        <option value="NON-AC">NON-AC</option>
+    </select>
+    <br><br>
+    <div>
+        <label for="quantity">Cost Of The Rent Per Hour</label><br>
+        <input type="number" id="cost" name="cost_h" size="100"><br><br>
+        <label for="quantity">Cost Of The Rent Per Kilomerter</label><br>
+        <input type="number" id="cost" name="cost_k" size="100"><br><br>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
