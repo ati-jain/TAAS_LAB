@@ -1,5 +1,4 @@
-{% extends 'base_a.html' %}
-
+{% extends 'base_c.html' %}
 {% block body %}
 <div class="container">
     <div class="row">
@@ -14,22 +13,23 @@
                 <thead>
                     <tr>
                         <th scope="col">Model</th>
-                        <th scope="col">No. of AC Car</th>
-                        <th scope="col">No. of Non-AC Car</th>
-                        <th scope="col">Rent/km</th>
                         <th scope="col">Rent/hr</th>
+                        <th scope="col">Rent/km</th>
                         <th scope="col">Rating</th>
+                        <th scope="col">Book Now</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for car in cmdl %}
+                    {% for car in models %}
                     <tr>
-                        <td>{{ car.mname }}</td>
-                        <td>{{ car.accar }}</td>
-                        <td>{{ car.naccar }}</td>
+                        <td scope="row">{{ car.mname }}</td>
                         <td>{{ car.rent_h }}</td>
                         <td>{{ car.rent_k }}</td>
                         <td>{{ car.feedback }}</td>
+                        <td>
+                            <a type="button" href="/booking/{{customer.id}}/{{car.mno}}"
+                                class="btn btn-outline-dark btn-sm mx-1">Book</button>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

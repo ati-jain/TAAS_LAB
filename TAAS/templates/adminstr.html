@@ -1,6 +1,6 @@
-{% extends 'base1.html' %}
+{% extends 'base_a.html' %}
 
-{% block login %}
+{% block body %}
 </br>
 <style>
     .btn-primary {
@@ -19,11 +19,17 @@
         float: left;
         width: 25%;
         padding: 0 10px;
+        margin: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Remove extra left and right margins, due to padding in columns */
     .row {
         margin: 0 -5px;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Clear floats after the columns */
@@ -31,6 +37,10 @@
         content: "";
         display: table;
         clear: both;
+    }
+
+    .card-body {
+        margin: auto;
     }
 </style>
 <div class="row">
@@ -69,24 +79,39 @@
             <img src="{{url_for('static', filename='images/car_logo.jpg')}}" class="card-img-top" alt="Add Car"
                 width=200px height=200px>
             <div class="card-body">
-                <a href="/addCar" class="btn btn-primary">Add Car</a>
+                <a href="/addC" class="btn btn-primary">Add Car</a>
             </div>
         </div>
     </div>
 
     <div class="column">
         <div class="card" style="width: 18rem;">
-            <img src="{{url_for('static', filename='images/repair_car.png')}}" class="card-img-top" alt="Repair Car"
+            <img src="{{url_for('static', filename='images/repair_car.jpg')}}" class="card-img-top" alt="Repair Car"
                 width=200px height=200px>
             <div class="card-body">
-                <a href="/" class="btn btn-primary">Repair Car</a>
+                <a href="/repair_snd" class="btn btn-primary">Send Car to repair</a>
             </div>
         </div>
     </div>
-    <!-- <a class="btn btn-primary" href="/carlist" role="button">List Cars</a>
-    <a class="btn btn-primary" href="/customerlist" role="button">List Customers</a>
-    <a class="btn btn-primary" href="/stats" role="button">Show Statistics</a>
-    <a class="btn btn-primary" href="/" role="button">Add Car</a>
-    <a class="btn btn-primary" href="/" role="button">Repair Car / Delete Car</a> -->
+
+    <div class="column">
+        <div class="card" style="width: 18rem;">
+            <img src="{{url_for('static', filename='images/get_repair.png')}}" class="card-img-top" alt="Repair Car"
+                width=200px height=200px>
+            <div class="card-body">
+                <a href="/repair_get" class="btn btn-primary">Get Car from repair</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card" style="width: 18rem;">
+            <img src="{{url_for('static', filename='images/remove.jpg')}}" class="card-img-top" alt="Remove Car"
+                width=200px height=200px>
+            <div class="card-body">
+                <a href="/delete" class="btn btn-primary">Remove Car</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

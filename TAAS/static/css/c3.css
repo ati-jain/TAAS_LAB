@@ -4,6 +4,14 @@
 .brand {
     font-weight: bold;
     font-size: 20px; }
+
+  .attr {
+    color: green;
+  }
+
+  .val{
+    color: black;
+  }
   
   .site-header {
     position: relative;

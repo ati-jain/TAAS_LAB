@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import date, datetime
 
 app = Flask(__name__)
 app.secret_key = 'deskchampionsknowthesecretkey'
